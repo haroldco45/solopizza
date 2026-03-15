@@ -3,161 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solo Pizza - Tarjeta Digital Profesional</title>
+    <title>Solo Pizza - Tarjeta Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-red: #d62828;
-            --pizza-gold: #f77f00;
-            --bg-light: #eae2b7;
+            --primary-red: #e63946;
+            --pizza-gold: #ffb703;
+            --dark: #1d3557;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0;
-            background: #111;
+            background-color: #f0f2f5;
             display: flex; justify-content: center;
         }
 
-        .card {
-            width: 100%; max-width: 450px;
-            background: white; min-height: 100vh;
-            position: relative; overflow-x: hidden;
+        .card-container {
+            width: 100%; max-width: 480px;
+            background: #fff; min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            display: flex; flex-direction: column;
         }
 
-        /* Banner Principal */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('[attachment_0](attachment)');
-            background-size: cover; background-position: center;
-            height: 200px; display: flex; align-items: center; justify-content: center;
-            color: white; text-align: center;
+        /* Header con el Logo del Bordado */
+        .header {
+            background-color: var(--primary-red);
+            padding: 40px 20px; text-align: center; color: white;
+            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
         }
 
-        /* Logo Extraído del Bordado */
-        .logo-container {
-            width: 120px; height: 120px;
+        .logo-circle {
+            width: 130px; height: 130px;
             background: white; border-radius: 50%;
-            margin: -60px auto 10px; position: relative;
+            margin: 0 auto 15px; display: flex;
+            align-items: center; justify-content: center;
             border: 4px solid var(--pizza-gold);
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
         }
 
-        .logo-text {
-            font-family: 'Brush Script MT', cursive;
-            color: var(--primary-red); font-size: 24px; line-height: 0.9;
+        /* Recreación digital del logo enviado */
+        .logo-emu {
+            color: var(--primary-red); font-family: 'Brush Script MT', cursive;
+            font-size: 28px; line-height: 1; text-align: center;
         }
 
-        /* Menú Visual */
-        .menu-visual { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .pizza-item {
-            border-radius: 15px; overflow: hidden; background: #f9f9f9;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;
-        }
-        .pizza-item img { width: 100%; height: 100px; object-fit: cover; }
-        .pizza-item span { display: block; padding: 8px; font-weight: bold; font-size: 0.8rem; color: #333; }
-
-        .price-tag {
-            background: var(--primary-red); color: white;
-            padding: 10px; font-size: 1.5rem; font-weight: 900;
-            text-align: center; margin: 10px 0;
+        /* Catálogo de Productos con Fotos de Internet */
+        .catalog { padding: 20px; flex-grow: 1; }
+        .price-badge {
+            background: var(--pizza-gold); color: #000;
+            font-weight: bold; padding: 10px; border-radius: 10px;
+            margin-bottom: 20px; font-size: 1.2rem; text-align: center;
         }
 
-        /* Botonera Interactiva */
-        .btn-grid { padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .action-btn {
+        .grid-menu {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+        }
+
+        .product-card {
+            background: #fff; border-radius: 15px; overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+
+        .product-card img {
+            width: 100%; height: 110px; object-fit: cover;
+        }
+
+        .product-name {
+            padding: 8px; font-size: 0.85rem; font-weight: bold;
+            text-align: center; color: var(--dark);
+        }
+
+        /* Botonera de Contacto */
+        .contact-actions {
+            padding: 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
+        }
+
+        .btn {
             text-decoration: none; padding: 15px; border-radius: 12px;
-            color: white; font-weight: bold; display: flex; 
-            flex-direction: column; align-items: center; transition: 0.3s;
+            color: white; font-weight: bold; text-align: center;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
         }
-        .action-btn:active { transform: scale(0.9); }
-        .ws { background: #25D366; }
-        .tel { background: #007bff; }
-        .map { background: #ea4335; }
-        .web { background: #333; }
+
+        .btn-ws { background: #25D366; }
+        .btn-call { background: #007bff; }
+        .btn-map { background: #ea4335; }
+        .btn-web { background: #333; }
 
         .footer {
-            background: #222; color: #aaa; text-align: center;
-            padding: 20px; font-size: 10px; margin-top: 20px;
+            background: #f8f9fa; padding: 20px; text-align: center;
+            font-size: 11px; color: #666; border-top: 1px solid #eee;
         }
+
+        #timer { font-weight: bold; color: var(--primary-red); }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="hero">
-        <div>
-            <h1 style="margin:0; font-size: 2.5rem;">SOLO PIZZA</h1>
-            <p>El mejor sabor en el Parque Las Ceibas</p>
+<div class="card-container">
+    <div class="header">
+        <div class="logo-circle">
+            <div class="logo-emu">Solo<br><span style="font-size: 35px;">Pizza</span></div>
+        </div>
+        <h1 style="margin:0; letter-spacing: 1px;">SOLO PIZZA</h1>
+        <p style="margin:5px 0 0; opacity:0.9;">Parque Las Ceibas - Local 107</p>
+    </div>
+
+    <div class="catalog">
+        <div class="price-badge">🍕 Porción Individual: $7.000</div>
+        
+        <div class="grid-menu">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400" alt="Hawaiana">
+                <div class="product-name">Hawaiana</div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400" alt="Jamon Queso">
+                <div class="product-name">Jamón y Queso</div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=400" alt="Pollo Champiñones">
+                <div class="product-name">Pollo / Champiñones</div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=400" alt="Ranchera">
+                <div class="product-name">Ranchera / Maicitos</div>
+            </div>
         </div>
     </div>
 
-    <div class="logo-container">
-        <div class="logo-text">Solo<br>Pizza</div>
-    </div>
-
-    <div class="price-tag">PORCIÓN A SOLO $7.000</div>
-
-    <div class="menu-visual">
-        <div class="pizza-item">
-            <img src="[attachment_1](attachment)" alt="Hawaiana">
-            <span>HAWAIANA</span>
-        </div>
-        <div class="pizza-item">
-            <img src="[attachment_2](attachment)" alt="Pollo">
-            <span>POLLO CHAMP.</span>
-        </div>
-        <div class="pizza-item">
-            <img src="[attachment_3](attachment)" alt="Ranchera">
-            <span>RANCHERA / MAÍZ</span>
-        </div>
-        <div class="pizza-item">
-            <img src="[attachment_0](attachment)" alt="Jamon">
-            <span>JAMÓN Y QUESO</span>
-        </div>
-    </div>
-
-    <div style="text-align: center; padding: 10px; color: #555;">
-        <i class="fas fa-map-marker-alt"></i> Parque Las Ceibas - Local 107
-    </div>
-
-    <div class="btn-grid">
-        <a href="https://wa.me/573148908604" class="action-btn ws">
+    <div class="contact-actions">
+        <a href="https://wa.me/573148908604?text=Hola!%20Vengo%20de%20tu%20tarjeta%20digital,%20quiero%20una%20pizza" class="btn btn-ws">
             <i class="fab fa-whatsapp fa-2x"></i> WhatsApp
         </a>
-        <a href="tel:+573148908604" class="action-btn tel">
+        <a href="tel:+573148908604" class="btn btn-call">
             <i class="fas fa-phone-alt fa-2x"></i> Llamar
         </a>
-        <a href="https://www.google.com/maps/search/Parque+Las+Ceibas+Local+107" class="action-btn map">
-            <i class="fas fa-map-marked-alt fa-2x"></i> Ubicación
+        <a href="https://www.google.com/maps/search/Parque+las+ceibas+local+107" class="btn btn-map">
+            <i class="fas fa-map-marker-alt fa-2x"></i> Ubicación
         </a>
-        <a href="#" class="action-btn web">
-            <i class="fas fa-book-open fa-2x"></i> Catálogo
+        <a href="https://haroldco45.github.io/solopizza/#" class="btn btn-web">
+            <i class="fas fa-globe fa-2x"></i> Ver Web
         </a>
     </div>
 
     <div class="footer">
-        <p id="dt-colombia"></p>
-        <p>App desarrollada por <strong>vibras positivas (3117700431)</strong></p>
-        <p>Derechos de Autor Reservados</p>
+        <p id="clock"></p>
+        <p>App desarrollada por <strong>vibras positivas (3117700431)</strong><br>
+        Derechos de autor reservados &copy; 2026</p>
     </div>
 </div>
 
 <script>
-    // Control de Suscripción Invisible
-    const expDate = new Date('2026-12-31');
-    if (new Date() > expDate) {
-        document.body.innerHTML = "<div style='color:white; text-align:center; padding:50px;'>SUSCRIPCIÓN VENCIDA. CONTACTE A VIBRAS POSITIVAS.</div>";
+    // Control de suscripción invisible (Vencimiento 2026)
+    const expiry = new Date('2026-12-31');
+    if (new Date() > expiry) {
+        document.body.innerHTML = "<div style='padding:50px; text-align:center;'>Servicio temporalmente suspendido.</div>";
     }
 
-    // Fecha y Hora Real Colombia
-    function updateClock() {
-        const options = { timeZone: 'America/Bogota', hour12: true, year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-        document.getElementById('dt-colombia').innerText = "Colombia: " + new Date().toLocaleString('es-CO', options);
+    // Hora real de Colombia
+    function updateTime() {
+        const now = new Date();
+        const options = { timeZone: 'America/Bogota', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit', day: 'numeric', month: 'long' };
+        document.getElementById('clock').innerText = "Colombia: " + now.toLocaleString('es-CO', options);
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+    setInterval(updateTime, 1000);
+    updateTime();
 </script>
 
 </body>
