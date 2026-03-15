@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Pizza - Tarjeta Digital Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d62828;
+            --pizza-gold: #f77f00;
+            --bg-light: #eae2b7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: #111;
+            display: flex; justify-content: center;
+        }
+
+        .card {
+            width: 100%; max-width: 450px;
+            background: white; min-height: 100vh;
+            position: relative; overflow-x: hidden;
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('[attachment_0](attachment)');
+            background-size: cover; background-position: center;
+            height: 200px; display: flex; align-items: center; justify-content: center;
+            color: white; text-align: center;
+        }
+
+        /* Logo Extraído del Bordado */
+        .logo-container {
+            width: 120px; height: 120px;
+            background: white; border-radius: 50%;
+            margin: -60px auto 10px; position: relative;
+            border: 4px solid var(--pizza-gold);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            font-family: 'Brush Script MT', cursive;
+            color: var(--primary-red); font-size: 24px; line-height: 0.9;
+        }
+
+        /* Menú Visual */
+        .menu-visual { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .pizza-item {
+            border-radius: 15px; overflow: hidden; background: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;
+        }
+        .pizza-item img { width: 100%; height: 100px; object-fit: cover; }
+        .pizza-item span { display: block; padding: 8px; font-weight: bold; font-size: 0.8rem; color: #333; }
+
+        .price-tag {
+            background: var(--primary-red); color: white;
+            padding: 10px; font-size: 1.5rem; font-weight: 900;
+            text-align: center; margin: 10px 0;
+        }
+
+        /* Botonera Interactiva */
+        .btn-grid { padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .action-btn {
+            text-decoration: none; padding: 15px; border-radius: 12px;
+            color: white; font-weight: bold; display: flex; 
+            flex-direction: column; align-items: center; transition: 0.3s;
+        }
+        .action-btn:active { transform: scale(0.9); }
+        .ws { background: #25D366; }
+        .tel { background: #007bff; }
+        .map { background: #ea4335; }
+        .web { background: #333; }
+
+        .footer {
+            background: #222; color: #aaa; text-align: center;
+            padding: 20px; font-size: 10px; margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="hero">
+        <div>
+            <h1 style="margin:0; font-size: 2.5rem;">SOLO PIZZA</h1>
+            <p>El mejor sabor en el Parque Las Ceibas</p>
+        </div>
+    </div>
+
+    <div class="logo-container">
+        <div class="logo-text">Solo<br>Pizza</div>
+    </div>
+
+    <div class="price-tag">PORCIÓN A SOLO $7.000</div>
+
+    <div class="menu-visual">
+        <div class="pizza-item">
+            <img src="[attachment_1](attachment)" alt="Hawaiana">
+            <span>HAWAIANA</span>
+        </div>
+        <div class="pizza-item">
+            <img src="[attachment_2](attachment)" alt="Pollo">
+            <span>POLLO CHAMP.</span>
+        </div>
+        <div class="pizza-item">
+            <img src="[attachment_3](attachment)" alt="Ranchera">
+            <span>RANCHERA / MAÍZ</span>
+        </div>
+        <div class="pizza-item">
+            <img src="[attachment_0](attachment)" alt="Jamon">
+            <span>JAMÓN Y QUESO</span>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 10px; color: #555;">
+        <i class="fas fa-map-marker-alt"></i> Parque Las Ceibas - Local 107
+    </div>
+
+    <div class="btn-grid">
+        <a href="https://wa.me/573148908604" class="action-btn ws">
+            <i class="fab fa-whatsapp fa-2x"></i> WhatsApp
+        </a>
+        <a href="tel:+573148908604" class="action-btn tel">
+            <i class="fas fa-phone-alt fa-2x"></i> Llamar
+        </a>
+        <a href="https://www.google.com/maps/search/Parque+Las+Ceibas+Local+107" class="action-btn map">
+            <i class="fas fa-map-marked-alt fa-2x"></i> Ubicación
+        </a>
+        <a href="#" class="action-btn web">
+            <i class="fas fa-book-open fa-2x"></i> Catálogo
+        </a>
+    </div>
+
+    <div class="footer">
+        <p id="dt-colombia"></p>
+        <p>App desarrollada por <strong>vibras positivas (3117700431)</strong></p>
+        <p>Derechos de Autor Reservados</p>
+    </div>
+</div>
+
+<script>
+    // Control de Suscripción Invisible
+    const expDate = new Date('2026-12-31');
+    if (new Date() > expDate) {
+        document.body.innerHTML = "<div style='color:white; text-align:center; padding:50px;'>SUSCRIPCIÓN VENCIDA. CONTACTE A VIBRAS POSITIVAS.</div>";
+    }
+
+    // Fecha y Hora Real Colombia
+    function updateClock() {
+        const options = { timeZone: 'America/Bogota', hour12: true, year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        document.getElementById('dt-colombia').innerText = "Colombia: " + new Date().toLocaleString('es-CO', options);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+
+</body>
+</html>
